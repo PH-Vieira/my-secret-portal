@@ -5,6 +5,7 @@ import { Header } from '@/components/dashboard/Header';
 import { ProjectCard } from '@/components/dashboard/ProjectCard';
 import { ServerInfo } from '@/components/dashboard/ServerInfo';
 import { PasswordModal } from '@/components/dashboard/PasswordModal';
+import { WallpaperBackground } from '@/components/dashboard/WallpaperBackground';
 
 const Index = () => {
   const { isAuthenticated, isLoading, login, logout } = useAuth();
@@ -27,7 +28,8 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen relative">
+      <WallpaperBackground />
       <Header
         isAuthenticated={isAuthenticated}
         onAdminClick={() => setShowPasswordModal(true)}
