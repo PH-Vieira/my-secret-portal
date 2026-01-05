@@ -190,3 +190,17 @@
   .terminal-purple { color: hsl(var(--terminal-purple)); }
   .terminal-dim { color: hsl(var(--terminal-dim)); }
 }
+
+/* Rainbow mode easter egg */
+@keyframes rainbow-shift {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+.rainbow-mode {
+  animation: rainbow-shift 2s linear infinite;
+}
+
+.rainbow-mode * {
+  transition: filter 0.3s ease;
+}
