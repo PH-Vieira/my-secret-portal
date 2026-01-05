@@ -9,36 +9,22 @@ export interface Project {
 // Configure your projects/subdomains here
 export const projects: Project[] = [
   {
-    id: 'project-1',
-    name: 'API Server',
-    description: 'Backend REST API',
-    url: 'https://api.seudominio.com',
+    id: 'wa-bot-shop',
+    name: 'Loja do bot de Whatsapp',
+    description: 'UI Shop',
+    url: 'https://bot-shop.monumental.center',
     status: 'online',
-  },
-  {
-    id: 'project-2',
-    name: 'Blog',
-    description: 'Personal blog',
-    url: 'https://blog.seudominio.com',
-    status: 'online',
-  },
-  {
-    id: 'project-3',
-    name: 'Docs',
-    description: 'Documentation site',
-    url: 'https://docs.seudominio.com',
-    status: 'maintenance',
   },
 ];
 
 // Server info (simulated - replace with real data or API calls)
 export const serverInfo = {
   hostname: 'vps-server',
-  ip: '192.168.1.100',
+  ip: '72.62.106.22',
   os: 'Ubuntu 22.04 LTS',
-  kernel: '5.15.0-generic',
-  uptime: '42 days, 7 hours',
-  cpu: '4 cores @ 2.4GHz',
-  ram: '8GB / 16GB (50%)',
-  disk: '120GB / 500GB (24%)',
+  kernel: '6.8.0-90-generic',
+  uptime: '',
+  cpu: 'AMD EPYC 9354P 32-Core Processor @ 2.0GHz',
+  ram: '4GB',
+  disk: '50GB',
 };
