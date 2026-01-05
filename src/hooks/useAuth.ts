@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 // Default: "admin123" - CHANGE THIS to your own password hash!
 // To generate a hash, run in browser console: 
 // crypto.subtle.digest('SHA-256', new TextEncoder().encode('your-password')).then(h => console.log(Array.from(new Uint8Array(h)).map(b => b.toString(16).padStart(2, '0')).join('')))
-const PASSWORD_HASH = '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9';
+const PASSWORD_HASH = '40c110f873b68a765841be42dfbec4a52139586c32443a4c6d3838d4d0412def';
 
 const AUTH_KEY = 'dashboard_authenticated';
 
