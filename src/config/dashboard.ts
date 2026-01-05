@@ -29,6 +29,13 @@ export const projects: Project[] = [
     url: 'https://coin-clicker.monumental.center',
     status: 'online',
   },
+  {
+    id: 'pesca',
+    name: 'Jogo de pesca',
+    description: 'Jogo simples de pesca',
+    url: 'https://pesca.monumental.center',
+    status: 'online',
+  },
 ];
 
 // Server info (simulated - replace with real data or API calls)
