@@ -1,23 +1,28 @@
 import { ExternalLink } from 'lucide-react';
 import type { Project } from '@/config/dashboard';
+import type { ServiceStatus } from '@/hooks/useServiceStatus';
 
 interface ProjectCardProps {
   project: Project;
   showStatus?: boolean;
+  liveStatus?: ServiceStatus;
 }
 
-export function ProjectCard({ project, showStatus = false }: ProjectCardProps) {
+export function ProjectCard({ project, showStatus = false, liveStatus }: ProjectCardProps) {
   const statusColors = {
     online: 'bg-terminal-green',
     offline: 'bg-terminal-red',
-    maintenance: 'bg-terminal-yellow',
+    checking: 'bg-terminal-yellow',
   };
 
   const statusLabels = {
     online: 'ONLINE',
     offline: 'OFFLINE',
-    maintenance: 'MAINT',
+    checking: 'CHECKING...',
   };
+
+  // Use live status if available, otherwise fall back to configured status
+  const currentStatus = liveStatus || project.status;
 
   return (
     <a
@@ -36,10 +41,12 @@ export function ProjectCard({ project, showStatus = false }: ProjectCardProps) {
             {showStatus && (
               <div className="flex items-center gap-1.5">
                 <span
-                  className={`h-2 w-2 rounded-full ${statusColors[project.status]} pulse-glow`}
+                  className={`h-2 w-2 rounded-full ${statusColors[currentStatus]} ${
+                    currentStatus === 'checking' ? 'animate-pulse' : 'pulse-glow'
+                  }`}
                 />
                 <span className="text-xs text-muted-foreground">
-                  [{statusLabels[project.status]}]
+                  [{statusLabels[currentStatus]}]
                 </span>
               </div>
             )}

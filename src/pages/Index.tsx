@@ -6,10 +6,25 @@ import { ProjectCard } from '@/components/dashboard/ProjectCard';
 import { ServerInfo } from '@/components/dashboard/ServerInfo';
 import { PasswordModal } from '@/components/dashboard/PasswordModal';
 import { WallpaperBackground } from '@/components/dashboard/WallpaperBackground';
+import { BootSequence } from '@/components/dashboard/BootSequence';
+import { MatrixRain } from '@/components/dashboard/MatrixRain';
+import { SecretTerminal } from '@/components/dashboard/SecretTerminal';
+import { useServiceStatus } from '@/hooks/useServiceStatus';
+import { useEasterEggs } from '@/hooks/useEasterEggs';
 
 const Index = () => {
   const { isAuthenticated, isLoading, login, logout } = useAuth();
   const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [showBoot, setShowBoot] = useState(() => !sessionStorage.getItem('hasBooted'));
+  const { statuses } = useServiceStatus();
+  const {
+    matrixActive,
+    terminalActive,
+    rainbowActive,
+    closeTerminal,
+    closeMatrix,
+    triggerRainbow,
+  } = useEasterEggs();
 
   const handleLogin = async (password: string) => {
     const success = await login(password);
@@ -18,6 +33,11 @@ const Index = () => {
     }
     return success;
   };
+
+  // Show boot sequence
+  if (showBoot) {
+    return <BootSequence onComplete={() => setShowBoot(false)} />;
+  }
 
   if (isLoading) {
     return (
@@ -28,12 +48,18 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen relative">
+    <div className={`min-h-screen relative ${rainbowActive ? 'rainbow-mode' : ''}`}>
       <WallpaperBackground />
+      
+      {/* Easter Eggs */}
+      {matrixActive && <MatrixRain onClose={closeMatrix} />}
+      {terminalActive && <SecretTerminal onClose={closeTerminal} />}
+      
       <Header
         isAuthenticated={isAuthenticated}
         onAdminClick={() => setShowPasswordModal(true)}
         onLogout={logout}
+        onRainbow={triggerRainbow}
       />
 
       <main className="container mx-auto px-4 py-8">
@@ -60,6 +86,7 @@ const Index = () => {
                 key={project.id}
                 project={project}
                 showStatus={isAuthenticated}
+                liveStatus={isAuthenticated ? statuses[project.id] : undefined}
               />
             ))}
           </div>
