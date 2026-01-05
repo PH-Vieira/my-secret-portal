@@ -22,6 +22,13 @@ export const projects: Project[] = [
     url: 'https://erp.monumental.center',
     status: 'online',
   },
+  {
+    id: 'coin-clicker',
+    name: 'Coin Clicker',
+    description: 'Clicker Simples',
+    url: 'https://coin-clicker.monumental.center',
+    status: 'online',
+  },
 ];
 
 // Server info (simulated - replace with real data or API calls)
