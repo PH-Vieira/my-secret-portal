@@ -15,6 +15,13 @@ export const projects: Project[] = [
     url: 'https://bot-shop.monumental.center',
     status: 'online',
   },
+  {
+    id: 'erp',
+    name: 'ERP',
+    description: 'erp',
+    url: 'https://erp.monumental.center',
+    status: 'online',
+  },
 ];
 
 // Server info (simulated - replace with real data or API calls)
